@@ -193,8 +193,6 @@ Launch via:
 ```bash
 Launch_EDA_Workbench.bat
 ```
-*(Desktop shortcuts are also placed on your desktop as `Launch_ApexGPU_Workbench.bat` and `Launch_ApexGPU_Waveforms.bat`)*
-
 ---
 
 ## Repository Structure
