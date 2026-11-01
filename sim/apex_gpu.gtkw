@@ -1,0 +1,41 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (RTL Waveform Viewer)
+[*] Apex-GPU SIMT Streaming Multiprocessor Simulation
+[*]
+[dumpfile] "sim/apex_gpu.vcd"
+[savefile] "sim/apex_gpu.gtkw"
+[timestart] 0
+[size] 1920 1080
+[pos] -1 -1
+*-14.000000 150000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_apex_gpu.
+[treeopen] tb_apex_gpu.dut.
+@28
+tb_apex_gpu.clk
+tb_apex_gpu.rst_n
+tb_apex_gpu.start
+tb_apex_gpu.busy
+tb_apex_gpu.done
+@22
+tb_apex_gpu.fetch_pc[15:0]
+tb_apex_gpu.inst_data[31:0]
+@28
+tb_apex_gpu.dut.u_div_stack.divergence_active
+tb_apex_gpu.dut.u_div_stack.active_mask[7:0]
+tb_apex_gpu.dut.u_div_stack.stack_depth_out[2:0]
+@22
+tb_apex_gpu.dut.u_lane[0].alu_out[31:0]
+tb_apex_gpu.dut.u_lane[7].alu_out[31:0]
+@28
+tb_apex_gpu.dut.u_coalescer.axi_req_valid
+@22
+tb_apex_gpu.m_axi_araddr[31:0]
+tb_apex_gpu.m_axi_arlen[7:0]
+@28
+tb_apex_gpu.dut.u_mma.mma_valid
+tb_apex_gpu.dut.u_mma.mma_done
+@22
+tb_apex_gpu.perf_cycles[31:0]
+tb_apex_gpu.perf_inst_count[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

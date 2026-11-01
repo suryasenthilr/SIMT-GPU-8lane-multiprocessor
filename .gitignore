@@ -1,0 +1,17 @@
+# EDA Simulation Artifacts
+*.vvp
+*.vcd
+*.vpd
+*.fsdb
+
+# Logs & Temp files
+*.log
+synth/synth.log
+
+# Python
+__pycache__/
+*.pyc
+
+# OS generated
+.DS_Store
+Thumbs.db
