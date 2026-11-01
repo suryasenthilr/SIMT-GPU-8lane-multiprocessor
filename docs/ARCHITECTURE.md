@@ -2,6 +2,10 @@
 
 **Apex-GPU** is a synthesizable, cycle-accurate 8-Lane SIMT (Single-Instruction, Multiple-Threads) Streaming Multiprocessor (SM) Core with hardware branch divergence handling, fine-grained warp scheduling, hardware scoreboarding, spatial memory coalescing, warp-cooperative 4x4 matrix MMA execution, 8-bank shared memory, and AMBA AXI4 master burst interconnect.
 
+<p align="center">
+  <img src="images/apex_gpu_architecture.png" alt="Apex-GPU Microarchitecture Diagram" width="100%">
+</p>
+
 ---
 
 ## 1. Architectural Concerns & Design Solutions
@@ -79,6 +83,10 @@ Apex-GPU utilizes a RISC-V RV32I-derived instruction format augmented with SIMT 
 ## 3. Physical ASIC Synthesis Report (Nangate 45nm)
 
 The complete top-level core (`apex_gpu_top`) was synthesized and technology-mapped to the **Nangate 45nm Open Cell Library** (`NangateOpenCellLibrary_typical.lib`, 1.10V, 25°C) using Yosys and ABC.
+
+<p align="center">
+  <img src="images/apex_gpu_asic_metrics.png" alt="Apex-GPU ASIC Physical Synthesis Dashboard (Nangate 45nm)" width="100%">
+</p>
 
 ### 3.1 Synthesis Summary Metrics
 

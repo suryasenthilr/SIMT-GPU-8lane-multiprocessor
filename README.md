@@ -4,6 +4,10 @@ Apex-GPU is a synthesizable, cycle-accurate 8-Lane SIMT (Single-Instruction, Mul
 
 The architecture is built from first principles to address the primary microarchitectural and physical design challenges in modern GPU silicon engineering, including hardware branch divergence and reconvergence stacks, fine-grained multithreaded warp scheduling, hardware scoreboarding, warp-cooperative systolic matrix execution (MMA), spatial memory coalescing, multi-bank shared memory scratchpads, and AMBA AXI4 master burst interconnects.
 
+<p align="center">
+  <img src="docs/images/apex_gpu_architecture.png" alt="Apex-GPU Microarchitecture Block Diagram" width="100%">
+</p>
+
 ---
 
 ## Key Architectural Highlights
@@ -187,6 +191,10 @@ vvp sim/apex_gpu_sim.vvp
 
 The complete integrated top-level core (`apex_gpu_top.v`) was synthesized targeting the industry-standard **Nangate 45nm Open Cell Library** (`NangateOpenCellLibrary_typical.lib`, 1.10V, 25°C) using Yosys and ABC.
 
+<p align="center">
+  <img src="docs/images/apex_gpu_asic_metrics.png" alt="Apex-GPU ASIC Physical Synthesis Dashboard (Nangate 45nm)" width="100%">
+</p>
+
 ### Core Physical Metrics
 
 | Physical Parameter | Value | Details |
@@ -216,6 +224,11 @@ Pre-configured waveform configurations are provided in `sim/apex_gpu.gtkw`. Doub
 ```bash
 gtkwave sim/apex_gpu.vcd sim/apex_gpu.gtkw
 ```
+
+<p align="center">
+  <img src="docs/images/apex_gpu_waveforms.png" alt="Apex-GPU Cycle-Accurate Execution Waveforms" width="100%">
+</p>
+
 Key waveforms exposed:
 * `fetch_pc`, `inst_data`, `active_mask`, `divergence_active`, `stack_depth_out`
 * Per-lane register updates (`rf[2]`, `rf[4]`, `rf[7]`)
@@ -227,6 +240,10 @@ Key waveforms exposed:
 ## Graphical Desktop Workbench
 
 Apex-GPU includes a graphical EDA control center (`gui_app.py`) for desktop simulation, waveform launching, and ASIC synthesis.
+
+<p align="center">
+  <img src="docs/images/apex_gpu_workbench_ui.png" alt="Apex-GPU Silicon Engineering Workbench UI" width="100%">
+</p>
 
 Launch via:
 ```bash
@@ -241,7 +258,12 @@ Launch_EDA_Workbench.bat
 ```
 apex-gpu/
 ├── docs/
-│   └── ARCHITECTURE.md             # Microarchitectural specification & concern analysis
+│   ├── ARCHITECTURE.md             # Microarchitectural specification & concern analysis
+│   └── images/                     # High-resolution architectural, waveform & ASIC diagrams
+│       ├── apex_gpu_architecture.png
+│       ├── apex_gpu_waveforms.png
+│       ├── apex_gpu_asic_metrics.png
+│       └── apex_gpu_workbench_ui.png
 ├── rtl/
 │   ├── apex_gpu_top.v              # Integrated 8-Lane SIMT GPU Streaming Multiprocessor
 │   ├── simt_divergence_stack.v     # 8-Entry hardware branch divergence & reconvergence stack
@@ -255,7 +277,11 @@ apex-gpu/
 │   ├── golden_gpu_model.py         # Bit-exact Python reference simulator
 │   ├── tb_apex_gpu.v               # Self-checking architectural verification testbench
 │   ├── apex_gpu.vcd                # Generated simulation value change dump
-│   └── apex_gpu.gtkw               # Pre-configured GTKWave visualization layout
+│   ├── apex_gpu.gtkw               # Pre-configured GTKWave visualization layout
+│   ├── generate_arch_diagram.py    # Architectural block diagram generator
+│   ├── generate_waveforms.py       # Digital timing diagram generator
+│   ├── generate_asic_chart.py      # Nangate 45nm synthesis KPI & cell distribution generator
+│   └── generate_workbench_poster.py # Silicon Engineering Workbench UI poster generator
 ├── synth/
 │   ├── run_synth_asic.ys           # Yosys Nangate 45nm ASIC synthesis script
 │   ├── nangate45.lib               # Nangate 45nm Open Cell Library
