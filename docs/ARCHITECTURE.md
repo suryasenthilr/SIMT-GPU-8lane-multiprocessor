@@ -84,10 +84,6 @@ Apex-GPU utilizes a RISC-V RV32I-derived instruction format augmented with SIMT 
 
 The complete top-level core (`apex_gpu_top`) was synthesized and technology-mapped to the **Nangate 45nm Open Cell Library** (`NangateOpenCellLibrary_typical.lib`, 1.10V, 25°C) using Yosys and ABC.
 
-<p align="center">
-  <img src="images/apex_gpu_asic_metrics.png" alt="Apex-GPU ASIC Physical Synthesis Dashboard (Nangate 45nm)" width="100%">
-</p>
-
 ### 3.1 Synthesis Summary Metrics
 
 | Metric | Measured Value | Unit / Context |

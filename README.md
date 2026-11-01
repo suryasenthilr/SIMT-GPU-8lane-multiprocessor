@@ -191,10 +191,6 @@ vvp sim/apex_gpu_sim.vvp
 
 The complete integrated top-level core (`apex_gpu_top.v`) was synthesized targeting the industry-standard **Nangate 45nm Open Cell Library** (`NangateOpenCellLibrary_typical.lib`, 1.10V, 25°C) using Yosys and ABC.
 
-<p align="center">
-  <img src="docs/images/apex_gpu_asic_metrics.png" alt="Apex-GPU ASIC Physical Synthesis Dashboard (Nangate 45nm)" width="100%">
-</p>
-
 ### Core Physical Metrics
 
 | Physical Parameter | Value | Details |
@@ -259,11 +255,10 @@ Launch_EDA_Workbench.bat
 apex-gpu/
 ├── docs/
 │   ├── ARCHITECTURE.md             # Microarchitectural specification & concern analysis
-│   └── images/                     # High-resolution architectural, waveform & ASIC diagrams
-│       ├── apex_gpu_architecture.png
-│       ├── apex_gpu_waveforms.png
-│       ├── apex_gpu_asic_metrics.png
-│       └── apex_gpu_workbench_ui.png
+│   └── images/                     # Architectural diagram & authentic EDA screenshots
+│       ├── apex_gpu_architecture.png # Academic IEEE-style block schematic
+│       ├── apex_gpu_waveforms.png    # Authentic GTKWave execution waveform capture
+│       └── apex_gpu_workbench_ui.png # Silicon Engineering Workbench GUI screenshot
 ├── rtl/
 │   ├── apex_gpu_top.v              # Integrated 8-Lane SIMT GPU Streaming Multiprocessor
 │   ├── simt_divergence_stack.v     # 8-Entry hardware branch divergence & reconvergence stack
@@ -278,10 +273,7 @@ apex-gpu/
 │   ├── tb_apex_gpu.v               # Self-checking architectural verification testbench
 │   ├── apex_gpu.vcd                # Generated simulation value change dump
 │   ├── apex_gpu.gtkw               # Pre-configured GTKWave visualization layout
-│   ├── generate_arch_diagram.py    # Architectural block diagram generator
-│   ├── generate_waveforms.py       # Digital timing diagram generator
-│   ├── generate_asic_chart.py      # Nangate 45nm synthesis KPI & cell distribution generator
-│   └── generate_workbench_poster.py # Silicon Engineering Workbench UI poster generator
+│   └── generate_arch_diagram.py    # Academic IEEE architectural diagram generator
 ├── synth/
 │   ├── run_synth_asic.ys           # Yosys Nangate 45nm ASIC synthesis script
 │   ├── nangate45.lib               # Nangate 45nm Open Cell Library
