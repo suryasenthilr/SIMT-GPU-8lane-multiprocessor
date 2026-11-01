@@ -55,23 +55,6 @@ The architecture is built from first principles to address the primary microarch
 
 ---
 
-## Architectural Concerns Addressed
-
-| Concern | Architectural Solution | Verification Status |
-|---|---|---|
-| **1. Warp Scheduling** | GTO arbitration hides long latency operations across 4 warps | **Verified (Simulation & Golden Model)** |
-| **2. Scoreboarding** | 128-bit hardware scoreboard tracks register dependencies per-warp | **Verified (No False RAW Stalls)** |
-| **3. Branch Divergence** | 8-entry hardware SIMT stack with nested divergence and reconvergence | **Verified (Active Mask transitions: 0xFF -> 0x0F -> 0xF0 -> 0xFF)** |
-| **4. Matrix Throughput** | 16 physical multipliers and 16 accumulators; 64 MACs in 4 cycles | **Verified (Bit-Exact NumPy & RTL Match)** |
-| **5. Memory Coalescing** | Contiguous line merging into 256-bit AXI burst; serialized strided accesses | **Verified (len=7 single burst observed)** |
-| **6. AXI4 Integration** | Full AXI4 burst handshake (AR/R and AW/W/B) with 4KB compliance | **Verified (Zero Protocol Violations)** |
-| **7. Shared Memory** | 8-bank scratchpad with crossbar conflict detection & hardware broadcast | **Verified (Single-cycle conflict-free access)** |
-| **8. Pipeline Hazards** | Predicated RF writeback (`lane_active && alu_wb_en && rd != 0`) | **Verified (No State Corruption)** |
-| **9. Full-Top Synthesis** | Synthesizes complete top-level `apex_gpu_top` rather than isolated blocks | **Verified (Nangate 45nm Standard Cells)** |
-| **10. Verification Coverage** | Bit-exact Python golden model and self-checking Verilog testbench | **Verified (100% Tests Passed)** |
-
----
-
 ## Verification & Simulation
 
 ### 1. Python Bit-Exact Golden Reference Model
