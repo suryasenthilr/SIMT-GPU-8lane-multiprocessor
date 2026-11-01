@@ -148,9 +148,20 @@ def generate_academic_arch():
     ax.text(77, 38.5, "global_mem reqs", ha='center', fontsize=7.5, fontfamily='serif')
 
     out_path = os.path.join(OUTPUT_DIR, "apex_gpu_architecture.png")
-    plt.savefig(out_path, dpi=300, facecolor=fig.get_facecolor(), edgecolor='none')
+    plt.savefig(out_path, dpi=300, facecolor=fig.get_facecolor(), edgecolor='none', bbox_inches='tight')
     plt.close()
-    print(f"[SUCCESS] Academic IEEE diagram generated: {out_path}")
+
+    # Tightly crop any remaining white border with PIL
+    from PIL import Image, ImageChops
+    im = Image.open(out_path)
+    bg = Image.new('RGB', im.size, (255, 255, 255))
+    diff = ImageChops.difference(im.convert('RGB'), bg)
+    bbox = diff.getbbox()
+    if bbox:
+        pad = 25
+        cropped = im.crop((max(0, bbox[0]-pad), max(0, bbox[1]-pad), min(im.width, bbox[2]+pad), min(im.height, bbox[3]+pad)))
+        cropped.save(out_path)
+    print(f"[SUCCESS] Academic IEEE diagram generated and tightly cropped: {out_path}")
 
 if __name__ == "__main__":
     generate_academic_arch()

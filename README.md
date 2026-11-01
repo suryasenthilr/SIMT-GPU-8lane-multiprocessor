@@ -12,43 +12,6 @@ The architecture is built from first principles to address the primary microarch
 
 ## Key Architectural Highlights
 
-```
-                                      +---------------------------------------------+
-                                      |            Host / Instruction Bus           |
-                                      +---------------------------------------------+
-                                                             |
-                                                             v
-+-----------------------------------------------------------------------------------------------------------------------+
-|                                                  APEX-GPU TOP CORE                                                    |
-|                                                                                                                       |
-|  +--------------------------------+   +------------------------------------+   +-----------------------------------+  |
-|  |     Warp Scheduler & GTO       |   |    Hardware SIMT Divergence Stack  |   |       128-Bit Scoreboard          |  |
-|  |   4 Warps, Zero-Cycle Switch   |-->|   8-Entry Stack, IPDOM Reconvergence|-->|   Tracks Outstanding RAW Hazards  |  |
-|  +--------------------------------+   +------------------------------------+   +-----------------------------------+  |
-|                                                         |                                                             |
-|                                                         v [Active Lane Mask]                                          |
-|  +-----------------------------------------------------------------------------------------------------------------+  |
-|  |                                       8 Parallel SIMD Execution Lanes                                           |  |
-|  |   Lane 0        Lane 1        Lane 2        Lane 3        Lane 4        Lane 5        Lane 6        Lane 7      |  |
-|  | [32-bit ALU]  [32-bit ALU]  [32-bit ALU]  [32-bit ALU]  [32-bit ALU]  [32-bit ALU]  [32-bit ALU]  [32-bit ALU]  |  |
-|  | [128-word RF] [128-word RF] [128-word RF] [128-word RF] [128-word RF] [128-word RF] [128-word RF] [128-word RF] |  |
-|  +-----------------------------------------------------------------------------------------------------------------+  |
-|             |                                           |                                           |                 |
-|             v                                           v                                           v                 |
-|  +----------------------+                 +---------------------------+               +----------------------------+  |
-|  | 4x4 Systolic MMA     |                 | 8-Bank Shared Memory      |               | Spatial Memory Coalescer   |  |
-|  | 16 DSP Multipliers   |                 | 4KB Scratchpad, Crossbar  |               | Contiguous Line Merging    |  |
-|  | 16 MACs/Cycle        |                 | Bank Conflict Arbiter     |               | Strided Serialization      |  |
-|  +----------------------+                 +---------------------------+               +----------------------------+  |
-|                                                                                                     |                 |
-+-----------------------------------------------------------------------------------------------------|-----------------+
-                                                                                                      v
-                                                                                        +----------------------------+
-                                                                                        |   AMBA AXI4 Master Burst   |
-                                                                                        |   256-Bit Data, 4KB Bounds |
-                                                                                        +----------------------------+
-```
-
 1. **Fine-Grained Multithreaded Warp Scheduler & GTO Arbiter**
    * Manages 4 concurrent warps with zero-cycle switching overhead.
    * Employs Greedy-Then-Oldest (GTO) and Round-Robin arbitration to maximize compute throughput.
