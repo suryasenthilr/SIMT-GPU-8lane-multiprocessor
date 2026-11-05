@@ -1,0 +1,472 @@
+OpenROAD 26Q2-1164-g08f67ee5ec 
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ORD-0030] Using 16 thread(s).
+=== Step 1: Reading Technology & Macro LEF ===
+[INFO ODB-0227] LEF file: /opt/orfs/flow/platforms/nangate45/lef/NangateOpenCellLibrary.tech.lef, created 22 layers, 27 vias
+[INFO ODB-0227] LEF file: /opt/orfs/flow/platforms/nangate45/lef/NangateOpenCellLibrary.macro.mod.lef, created 135 library cells
+=== Step 2: Reading Liberty Timing Libraries ===
+=== Step 3: Reading Synthesized Gate-Level Netlist ===
+=== Step 4: Creating Constraints ===
+=== Step 5: Floorplan Initialization ===
+[INFO IFP-0107] Defining die area using utilization: 58.00% and aspect ratio: 1.
+[WARNING IFP-0028] Core area lower left (6.000, 6.000) snapped to (6.080, 7.000).
+[INFO IFP-0001] Added 521 rows of 3847 site FreePDK45_38x28_10R_NP_162NW_34O.
+[INFO IFP-0100] Die BBox:  (  0.000  0.000 ) ( 743.060 743.060 ) um
+[INFO IFP-0101] Core BBox: (  6.080  7.000 ) ( 737.010 736.400 ) um
+[INFO IFP-0102] Core area:                       533140.342 um^2
+[INFO IFP-0103] Total instances area:            309978.312 um^2
+[INFO IFP-0104] Effective utilization:                0.581
+[INFO IFP-0105] Number of instances:                 168099
+=== Step 6: IO Pin Placement ===
+Found 0 macro blocks.
+Using 2 tracks default min distance between IO pins.
+[INFO PPL-0001] Number of available slots 5292
+[INFO PPL-0002] Number of I/O             407
+[INFO PPL-0003] Number of I/O w/sink      293
+[INFO PPL-0004] Number of I/O w/o sink    114
+[INFO PPL-0005] Slots per section         200
+[INFO PPL-0008] Successfully assigned pins to sections.
+[INFO PPL-0012] I/O nets HPWL: 116485.41 um.
+=== Step 7: Tapcell and Endcap Insertion ===
+[INFO TAP-0004] Inserted 1042 endcaps.
+[INFO TAP-0005] Inserted 9414 tapcells.
+=== Step 8: Power Distribution Network PDN ===
+[INFO PDN-0001] Inserting grid: grid
+=== Step 9: Global Placement RePlAce ===
+[INFO GPL-0001] ---- Initialize GPL Main Data Structures
+[INFO GPL-0002] DBU: 2000
+[INFO GPL-0003] SiteSize: (  0.190  1.400 ) um
+[INFO GPL-0004] CoreBBox: (  6.080  7.000 ) ( 737.010 736.400 ) um
+[INFO GPL-0036] Movable instances area:     309978.312 um^2
+[INFO GPL-0037] Total instances area:       312759.608 um^2
+[INFO GPL-0035] Pin density area adjust:     45741.339 um^2
+[INFO GPL-0032] ---- Initialize Region: Top-level
+[INFO GPL-0006] Number of instances:            178555
+[INFO GPL-0007] Movable instances:              168099
+[INFO GPL-0008] Fixed instances:                 10456
+[INFO GPL-0009] Dummy instances:                     0
+[INFO GPL-0010] Number of nets:                 203343
+[INFO GPL-0011] Number of pins:                 685032
+[INFO GPL-0012] Die BBox:  (  0.000  0.000 ) ( 743.060 743.060 ) um
+[INFO GPL-0013] Core BBox: (  6.080  7.000 ) ( 737.010 736.400 ) um
+[INFO GPL-0016] Core area:                  533140.342 um^2
+[INFO GPL-0014] Region name: top-level.
+[INFO GPL-0015] Region area:                533140.342 um^2
+[INFO GPL-0017] Fixed instances area:         2781.296 um^2
+[INFO GPL-0018] Movable instances area:     355719.651 um^2
+[INFO GPL-0019] Utilization:                    67.071 %
+[INFO GPL-0020] Standard cells area:        355719.651 um^2
+[INFO GPL-0021] Large instances area:            0.000 um^2
+[INFO GPL-0005] ---- Execute Conjugate Gradient Initial Placement.
+[INFO GPL-0051] Source of initial instance position counters:
+	Odb location = 0	Core center = 168099	Region center = 0
+[InitialPlace]  Iter: 1 conjugate gradient residual: 0.00053636 HPWL: 1964061840
+[InitialPlace]  Iter: 2 conjugate gradient residual: 0.00023170 HPWL: 1745528587
+[InitialPlace]  Iter: 3 conjugate gradient residual: 0.00016752 HPWL: 1715236819
+[InitialPlace]  Iter: 4 conjugate gradient residual: 0.00011715 HPWL: 1702915501
+[InitialPlace]  Iter: 5 conjugate gradient residual: 0.00010794 HPWL: 1701285629
+[InitialPlace]  Iter: 6 conjugate gradient residual: 0.00012988 HPWL: 1700515847
+[InitialPlace]  Iter: 7 conjugate gradient residual: 0.00010554 HPWL: 1700747277
+[InitialPlace]  Iter: 8 conjugate gradient residual: 0.00011393 HPWL: 1699235866
+[InitialPlace]  Iter: 9 conjugate gradient residual: 0.00009675 HPWL: 1698287935
+[InitialPlace]  Iter: 10 conjugate gradient residual: 0.00009881 HPWL: 1696389430
+[InitialPlace]  Iter: 11 conjugate gradient residual: 0.00009291 HPWL: 1694570230
+[InitialPlace]  Iter: 12 conjugate gradient residual: 0.00010415 HPWL: 1692838872
+[InitialPlace]  Iter: 13 conjugate gradient residual: 0.00009362 HPWL: 1691555014
+[InitialPlace]  Iter: 14 conjugate gradient residual: 0.00009365 HPWL: 1690684664
+[InitialPlace]  Iter: 15 conjugate gradient residual: 0.00008911 HPWL: 1690189708
+[InitialPlace]  Iter: 16 conjugate gradient residual: 0.00010015 HPWL: 1689594083
+[InitialPlace]  Iter: 17 conjugate gradient residual: 0.00008691 HPWL: 1689426649
+[InitialPlace]  Iter: 18 conjugate gradient residual: 0.00009596 HPWL: 1689387284
+[InitialPlace]  Iter: 19 conjugate gradient residual: 0.00008871 HPWL: 1689232902
+[InitialPlace]  Iter: 20 conjugate gradient residual: 0.00008793 HPWL: 1689127172
+[INFO GPL-0033] ---- Initialize Nesterov Region: Top-level
+[WARNING GPL-0302] Target density 0.6000 is too low for the available free area.
+Automatically adjusting to uniform density 0.6800.
+[INFO GPL-0023] Placement target density:       0.6800
+[INFO GPL-0024] Movable insts average area:      2.116 um^2
+[INFO GPL-0025] Ideal bin area:                  3.112 um^2
+[INFO GPL-0026] Ideal bin count:                171319
+[INFO GPL-0027] Total bin area:             533140.342 um^2
+[INFO GPL-0028] Bin count (X, Y):         256 ,    256
+[INFO GPL-0029] Bin size (W * H):       2.855 *  2.849 um
+[INFO GPL-0030] Number of bins:                  65536
+[INFO GPL-0084] ---- Execute Nesterov Global Placement.
+[INFO GPL-0031] HPWL: Half-Perimeter Wirelength
+Iteration | Overflow |     HPWL (um) |  HPWL(%) |   Penalty | Group
+---------------------------------------------------------------
+        0 |   0.9977 |  2.432000e+05 |   +0.00% |  6.81e-17 |      
+       10 |   0.9929 |  2.799939e+05 |  +15.13% |  1.09e-16 |      
+       20 |   0.9912 |  2.954723e+05 |   +5.53% |  1.76e-16 |      
+       30 |   0.9903 |  3.170301e+05 |   +7.30% |  2.86e-16 |      
+       40 |   0.9895 |  3.398237e+05 |   +7.19% |  4.63e-16 |      
+       50 |   0.9887 |  3.618322e+05 |   +6.48% |  7.51e-16 |      
+       60 |   0.9878 |  3.800487e+05 |   +5.03% |  1.22e-15 |      
+       70 |   0.9868 |  3.943185e+05 |   +3.75% |  1.98e-15 |      
+       80 |   0.9863 |  4.048829e+05 |   +2.68% |  3.21e-15 |      
+       90 |   0.9860 |  4.120598e+05 |   +1.77% |  5.22e-15 |      
+      100 |   0.9859 |  4.170682e+05 |   +1.22% |  8.50e-15 |      
+      110 |   0.9856 |  4.210105e+05 |   +0.95% |  1.38e-14 |      
+      120 |   0.9855 |  4.246104e+05 |   +0.86% |  2.25e-14 |      
+      130 |   0.9854 |  4.281840e+05 |   +0.84% |  3.66e-14 |      
+      140 |   0.9852 |  4.325093e+05 |   +1.01% |  5.96e-14 |      
+      150 |   0.9849 |  4.382835e+05 |   +1.34% |  9.70e-14 |      
+      160 |   0.9843 |  4.464999e+05 |   +1.87% |  1.58e-13 |      
+      170 |   0.9836 |  4.585072e+05 |   +2.69% |  2.56e-13 |      
+      180 |   0.9825 |  4.769280e+05 |   +4.02% |  4.16e-13 |      
+      190 |   0.9809 |  5.052826e+05 |   +5.95% |  6.74e-13 |      
+      200 |   0.9780 |  5.467955e+05 |   +8.22% |  1.09e-12 |      
+      210 |   0.9735 |  6.033034e+05 |  +10.33% |  1.75e-12 |      
+      220 |   0.9677 |  6.778764e+05 |  +12.36% |  2.81e-12 |      
+      230 |   0.9594 |  7.739701e+05 |  +14.18% |  4.48e-12 |      
+      240 |   0.9475 |  8.949622e+05 |  +15.63% |  7.11e-12 |      
+      250 |   0.9321 |  1.043113e+06 |  +16.55% |  1.12e-11 |      
+      260 |   0.9142 |  1.217367e+06 |  +16.71% |  1.76e-11 |      
+      270 |   0.8939 |  1.412318e+06 |  +16.01% |  2.75e-11 |      
+      280 |   0.8722 |  1.637097e+06 |  +15.92% |  4.26e-11 |      
+      290 |   0.8464 |  1.866281e+06 |  +14.00% |  6.60e-11 |      
+      300 |   0.8187 |  2.024401e+06 |   +8.47% |  1.04e-10 |      
+      310 |   0.7948 |  2.091244e+06 |   +3.30% |  1.66e-10 |      
+      320 |   0.7629 |  2.107528e+06 |   +0.78% |  2.69e-10 |      
+      330 |   0.7286 |  2.170275e+06 |   +2.98% |  4.34e-10 |      
+      340 |   0.6905 |  2.296838e+06 |   +5.83% |  6.87e-10 |      
+      350 |   0.6461 |  2.287444e+06 |   -0.41% |  1.11e-09 |      
+      360 |   0.5987 |  2.359936e+06 |   +3.17% |  1.79e-09 |      
+      370 |   0.5535 |  2.373642e+06 |   +0.58% |  2.86e-09 |      
+      380 |   0.4985 |  2.356740e+06 |   -0.71% |  4.63e-09 |      
+      390 |   0.4472 |  2.353076e+06 |   -0.16% |  7.46e-09 |      
+      400 |   0.3925 |  2.384773e+06 |   +1.35% |  1.20e-08 |      
+      410 |   0.3354 |  2.357952e+06 |   -1.12% |  1.91e-08 |      
+      420 |   0.2891 |  2.342105e+06 |   -0.67% |  2.81e-08 |      
+      430 |   0.2483 |  2.334418e+06 |   -0.33% |  4.14e-08 |      
+      440 |   0.2138 |  2.333482e+06 |   -0.04% |  6.09e-08 |      
+      450 |   0.1845 |  2.328835e+06 |   -0.20% |  8.97e-08 |      
+      460 |   0.1595 |  2.325268e+06 |   -0.15% |  1.32e-07 |      
+      470 |   0.1361 |  2.321718e+06 |   -0.15% |  1.95e-07 |      
+      480 |   0.1170 |  2.318510e+06 |   -0.14% |  2.87e-07 |      
+      490 |   0.0999 |  2.315599e+06 |   -0.13% |  4.23e-07 |      
+      490 |   0.0999 |  2.315599e+06 |          |  4.39e-07 |      
+---------------------------------------------------------------
+[INFO GPL-1001] Global placement finished at iteration 490
+[INFO GPL-1002] Placed Cell Area            355719.6506
+[INFO GPL-1003] Available Free Area         530359.0460
+[INFO GPL-1004] Minimum Feasible Density        0.6800 (cell_area / free_area)
+[INFO GPL-1006]   Suggested Target Densities:
+[INFO GPL-1007]     - For 90% usage of free space: 0.7452
+[INFO GPL-1008]     - For 80% usage of free space: 0.8384
+[INFO GPL-1014] Final placement area: 355719.65 (+0.00%)
+=== Step 10: Detailed Placement DPL Legalizer ===
+[INFO DPL-0006] Core area: 533140.34 um^2, Instances area: 312759.61 um^2, Utilization: 58.7%
+[INFO DPL-0005] Diamond search max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+[INFO DPL-1101] Legalizing using diamond search.
+Movements Summary
+---------------------------------------
+Total cells:                  168099
+Diamond Move Success:         168099 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+Placement Analysis
+---------------------------------
+total displacement     182632.2 u
+average displacement        1.0 u
+max displacement            4.0 u
+original HPWL         2318281.0 u
+legalized HPWL        2481414.6 u
+delta HPWL                    7 %
+
+=== Step 11: Clock Tree Synthesis TritonCTS ===
+[WARNING CTS-0104] Clock wire resistance/capacitance values are zero.
+Use set_wire_rc to set them.
+[INFO CTS-0050] Root buffer is CLKBUF_X1.
+[INFO CTS-0051] Sink buffer is CLKBUF_X1.
+[INFO CTS-0052] The following clock buffers will be used for CTS:
+                    CLKBUF_X1
+                    CLKBUF_X2
+                    CLKBUF_X3
+[INFO CTS-0049] Characterization buffer is CLKBUF_X3.
+[INFO CTS-0007] Net "clk" found for clock "clk".
+[INFO CTS-0010]  Clock net "clk" has 35133 sinks.
+[INFO CTS-0008] TritonCTS found 1 clock nets.
+[INFO CTS-0097] Characterization used 3 buffer(s) types.
+[INFO CTS-0201] 0 blockages from hard placement blockages and placed macros will be used.
+[INFO CTS-0027] Generating H-Tree topology for net clk.
+[INFO CTS-0028]  Total number of sinks: 35133.
+[INFO CTS-0090]  Sinks will be clustered based on buffer max cap.
+[INFO CTS-0030]  Number of static layers: 0.
+[INFO CTS-0020]  Wire segment unit: 14000  dbu (7 um).
+[INFO CTS-0206] Best clustering solution was found from max clustering size of 8 and max clustering diameter of 97.
+[INFO CTS-0019]  Total number of sinks after clustering: 4423.
+[INFO CTS-0024]  Normalized sink region: [(1.43857, 1.33286), (104.721, 104.822)].
+[INFO CTS-0025]     Width:  103.2820.
+[INFO CTS-0026]     Height: 103.4891.
+ Level 1
+    Direction: Vertical
+    Sinks per sub-region: 2212
+    Sub-region size: 103.2820 X 51.7446
+[INFO CTS-0034]     Segment length (rounded): 26.
+ Level 2
+    Direction: Horizontal
+    Sinks per sub-region: 1106
+    Sub-region size: 51.6410 X 51.7446
+[INFO CTS-0034]     Segment length (rounded): 26.
+ Level 3
+    Direction: Vertical
+    Sinks per sub-region: 553
+    Sub-region size: 51.6410 X 25.8723
+[INFO CTS-0034]     Segment length (rounded): 12.
+ Level 4
+    Direction: Horizontal
+    Sinks per sub-region: 277
+    Sub-region size: 25.8205 X 25.8723
+[INFO CTS-0034]     Segment length (rounded): 12.
+ Level 5
+    Direction: Vertical
+    Sinks per sub-region: 139
+    Sub-region size: 25.8205 X 12.9361
+[INFO CTS-0034]     Segment length (rounded): 6.
+ Level 6
+    Direction: Horizontal
+    Sinks per sub-region: 70
+    Sub-region size: 12.9102 X 12.9361
+[INFO CTS-0034]     Segment length (rounded): 6.
+ Level 7
+    Direction: Vertical
+    Sinks per sub-region: 35
+    Sub-region size: 12.9102 X 6.4681
+[INFO CTS-0034]     Segment length (rounded): 4.
+ Level 8
+    Direction: Horizontal
+    Sinks per sub-region: 18
+    Sub-region size: 6.4551 X 6.4681
+[INFO CTS-0034]     Segment length (rounded): 4.
+ Level 9
+    Direction: Vertical
+    Sinks per sub-region: 9
+    Sub-region size: 6.4551 X 3.2340
+[INFO CTS-0034]     Segment length (rounded): 1.
+[INFO CTS-0032]  Stop criterion found. Max number of sinks is 15.
+[INFO CTS-0035]  Number of sinks covered: 4423.
+[INFO CTS-0018]     Created 5213 clock buffers.
+[INFO CTS-0012]     Minimum number of buffers in the clock path: 6.
+[INFO CTS-0013]     Maximum number of buffers in the clock path: 7.
+[INFO CTS-0015]     Created 5213 clock nets.
+[INFO CTS-0016]     Fanout distribution for the current clock = 4:6, 5:19, 6:27, 7:319, 8:4296, 9:129, 10:71, 11:36, 12:13, 13:11, 14:3, 15:2, 16:1, 19:1..
+[INFO CTS-0017]     Max level of the clock tree: 9.
+[INFO CTS-0098] Clock net "clk"
+[INFO CTS-0099]  Sinks 38520
+[INFO CTS-0100]  Leaf buffers 4422
+[INFO CTS-0101]  Average sink wire length 1042.02 um
+[INFO CTS-0102]  Path depth 6 - 7
+[INFO CTS-0207]  Dummy loads inserted 3387
+[INFO DPL-0006] Core area: 533140.34 um^2, Instances area: 319803.55 um^2, Utilization: 60.0%
+[INFO DPL-0005] Diamond search max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+[INFO DPL-1101] Legalizing using diamond search.
+Movements Summary
+---------------------------------------
+Total cells:                  176699
+Diamond Move Success:         176699 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+Placement Analysis
+---------------------------------
+total displacement      11285.9 u
+average displacement        0.1 u
+max displacement            3.7 u
+original HPWL         2609408.3 u
+legalized HPWL        2610724.4 u
+delta HPWL                    0 %
+
+=== Step 12: Global Routing FastRoute ===
+[WARNING GRT-0281] Net rst_n has a large fanout of 3393 terminals.
+=== Step 13: Exporting DEF Layout and ODB ===
+=== Step 14: Timing and Power Signoff ===
+[WARNING STA-0168] unknown field nets.
+Startpoint: rst_n (input port clocked by clk)
+Endpoint: _315943_ (recovery check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: max
+
+Fanout      Cap     Slew    Delay     Time   Description
+---------------------------------------------------------------------------------
+                            0.000    0.000   clock clk (rise edge)
+                            0.000    0.000   clock network delay (propagated)
+                            0.400    0.400 ^ input external delay
+  3392 7586.329    0.000    0.000    0.400 ^ rst_n (in)
+                   3.294    2.695    3.095 ^ _315943_/RN (DFFR_X1)
+                                     3.095   data arrival time
+
+                            3.000    3.000   clock clk (rise edge)
+                            0.435    3.435   clock network delay (propagated)
+                            0.000    3.435   clock reconvergence pessimism
+                                     3.435 ^ _315943_/CK (DFFR_X1)
+                           -0.698    2.737   library recovery time
+                                     2.737   data required time
+---------------------------------------------------------------------------------
+                                     2.737   data required time
+                                    -3.095   data arrival time
+---------------------------------------------------------------------------------
+                                    -0.358   slack (VIOLATED)
+
+
+Startpoint: inst_data[20] (input port clocked by clk)
+Endpoint: _314271_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout      Cap     Slew    Delay     Time   Description
+---------------------------------------------------------------------------------
+                            0.000    0.000   clock clk (rise edge)
+                            0.000    0.000   clock network delay (propagated)
+                            0.400    0.400 v input external delay
+    46  105.451    0.000    0.000    0.400 v inst_data[20] (in)
+                   0.115    0.094    0.494 v _205658_/A2 (NOR2_X1)
+     8   11.496    0.065    0.119    0.613 ^ _205658_/ZN (NOR2_X1)
+                   0.065    0.000    0.613 ^ _205680_/A2 (NAND2_X1)
+    42  127.531    0.220    0.270    0.883 v _205680_/ZN (NAND2_X1)
+                   0.220    0.010    0.894 v _205692_/A2 (NAND2_X1)
+     4    9.934    0.064    0.111    1.005 ^ _205692_/ZN (NAND2_X1)
+                   0.064    0.001    1.005 ^ _205736_/B2 (OAI33_X1)
+     1    1.171    0.023    0.036    1.042 v _205736_/ZN (OAI33_X1)
+                   0.023    0.000    1.042 v _205902_/A (MUX2_X1)
+     3    5.773    0.014    0.073    1.114 v _205902_/Z (MUX2_X1)
+                   0.014    0.001    1.115 v _208358_/A3 (NOR4_X1)
+     2    3.770    0.061    0.098    1.214 ^ _208358_/ZN (NOR4_X1)
+                   0.061    0.000    1.214 ^ _208369_/A3 (NOR3_X1)
+     3    3.900    0.019    0.024    1.237 v _208369_/ZN (NOR3_X1)
+                   0.019    0.000    1.237 v _208435_/A1 (NOR4_X1)
+     4    7.415    0.094    0.111    1.348 ^ _208435_/ZN (NOR4_X1)
+                   0.094    0.000    1.348 ^ _208779_/A3 (NOR3_X1)
+     2    2.799    0.023    0.021    1.369 v _208779_/ZN (NOR3_X1)
+                   0.023    0.000    1.369 v _208790_/A4 (NOR4_X1)
+    18   37.016    0.365    0.460    1.829 ^ _208790_/ZN (NOR4_X1)
+                   0.365    0.002    1.832 ^ _212581_/B (OAI211_X1)
+   112  264.914    0.716    1.046    2.878 v _212581_/ZN (OAI211_X1)
+                   0.723    0.083    2.961 v _213325_/A1 (NOR2_X1)
+   250  988.469    3.973   10.149   13.110 ^ _213325_/ZN (NOR2_X1)
+                   3.989    0.289   13.399 ^ _214492_/A4 (NOR4_X1)
+     1    1.828    0.626   -0.296   13.103 v _214492_/ZN (NOR4_X1)
+                   0.626    0.000   13.103 v _214525_/A2 (NAND4_X1)
+     2    2.907    0.113    0.140   13.244 ^ _214525_/ZN (NAND4_X1)
+                   0.113    0.000   13.244 ^ _214536_/A4 (NOR4_X1)
+     4    9.902    0.037    0.045   13.289 v _214536_/ZN (NOR4_X1)
+                   0.037    0.002   13.290 v _214825_/A1 (NAND2_X1)
+   220  656.148    1.411    1.480   14.771 ^ _214825_/ZN (NAND2_X1)
+                   1.440    0.239   15.009 ^ _238831_/A1 (AND4_X1)
+     1    2.899    0.058    0.277   15.286 ^ _238831_/ZN (AND4_X1)
+                   0.058    0.001   15.287 ^ _238832_/B1 (OAI21_X1)
+    93  155.498    2.321    0.338   15.625 v _238832_/ZN (OAI21_X1)
+                   2.321    0.014   15.639 v _238931_/A (XNOR2_X1)
+     2    3.622    0.365    0.656   16.295 ^ _238931_/ZN (XNOR2_X1)
+                   0.365    0.000   16.295 ^ _239489_/B1 (OAI21_X1)
+     3    4.792    0.075    0.032   16.327 v _239489_/ZN (OAI21_X1)
+                   0.075    0.000   16.327 v _239492_/B2 (AOI21_X1)
+     2    4.753    0.042    0.077   16.405 ^ _239492_/ZN (AOI21_X1)
+                   0.042    0.000   16.405 ^ _239493_/B2 (OAI21_X1)
+     3    4.679    0.023    0.033   16.438 v _239493_/ZN (OAI21_X1)
+                   0.023    0.000   16.438 v _239496_/C2 (AOI211_X1)
+     2    4.245    0.054    0.071   16.509 ^ _239496_/ZN (AOI211_X1)
+                   0.054    0.000   16.510 ^ _239498_/B3 (OAI33_X1)
+     3    5.910    0.438    0.049   16.559 v _239498_/ZN (OAI33_X1)
+                   0.438    0.000   16.559 v _239500_/C1 (OAI211_X1)
+     3    5.129    0.106    0.180   16.739 ^ _239500_/ZN (OAI211_X1)
+                   0.106    0.000   16.739 ^ _239501_/A3 (AND3_X1)
+     2    3.011    0.014    0.061   16.800 ^ _239501_/ZN (AND3_X1)
+                   0.014    0.000   16.800 ^ _239504_/B3 (OAI33_X1)
+     3    6.070    0.440    0.038   16.838 v _239504_/ZN (OAI33_X1)
+                   0.440    0.000   16.838 v _239506_/C1 (OAI211_X1)
+     3    6.299    0.114    0.194   17.032 ^ _239506_/ZN (OAI211_X1)
+                   0.114    0.000   17.033 ^ _239508_/A3 (AND3_X1)
+     2    3.742    0.016    0.064   17.097 ^ _239508_/ZN (AND3_X1)
+                   0.016    0.000   17.097 ^ _239510_/B3 (OAI33_X1)
+     4    6.782    0.449    0.040   17.137 v _239510_/ZN (OAI33_X1)
+                   0.449    0.000   17.137 v _239512_/C1 (OAI211_X1)
+     3    4.941    0.107    0.180   17.317 ^ _239512_/ZN (OAI211_X1)
+                   0.107    0.000   17.318 ^ _239515_/A3 (AND3_X1)
+     2    3.693    0.016    0.063   17.381 ^ _239515_/ZN (AND3_X1)
+                   0.016    0.000   17.381 ^ _239517_/B3 (OAI33_X1)
+     4    6.630    0.447    0.040   17.421 v _239517_/ZN (OAI33_X1)
+                   0.447    0.000   17.421 v _239519_/C1 (OAI211_X1)
+     4    6.551    0.117    0.199   17.620 ^ _239519_/ZN (OAI211_X1)
+                   0.117    0.000   17.620 ^ _239520_/A3 (AND3_X1)
+     2    3.727    0.016    0.064   17.684 ^ _239520_/ZN (AND3_X1)
+                   0.016    0.000   17.685 ^ _239522_/A3 (OR3_X1)
+     3    5.475    0.017    0.039   17.724 ^ _239522_/ZN (OR3_X1)
+                   0.017    0.000   17.724 ^ _239528_/C1 (AOI211_X1)
+     2    3.761    0.021    0.022   17.746 v _239528_/ZN (AOI211_X1)
+                   0.021    0.000   17.746 v _239529_/A2 (NOR2_X1)
+     2    4.700    0.044    0.048   17.794 ^ _239529_/ZN (NOR2_X1)
+                   0.044    0.000   17.794 ^ _239530_/B1 (OAI21_X1)
+     2    3.150    0.023    0.025   17.820 v _239530_/ZN (OAI21_X1)
+                   0.023    0.000   17.820 v _239531_/A2 (AND2_X1)
+     3    5.232    0.009    0.044   17.864 v _239531_/ZN (AND2_X1)
+                   0.009    0.000   17.864 v _239534_/B1 (AOI21_X1)
+     3    5.507    0.039    0.046   17.910 ^ _239534_/ZN (AOI21_X1)
+                   0.039    0.000   17.910 ^ _239536_/A2 (NOR2_X1)
+     1    1.810    0.011    0.015   17.925 v _239536_/ZN (NOR2_X1)
+                   0.011    0.000   17.925 v _239537_/A (AOI21_X1)
+     1    2.674    0.093    0.045   17.970 ^ _239537_/ZN (AOI21_X1)
+                   0.093    0.000   17.970 ^ _239538_/B (XOR2_X1)
+     1    1.938    0.026    0.058   18.028 ^ _239538_/Z (XOR2_X1)
+                   0.026    0.000   18.028 ^ _239539_/A2 (NOR2_X1)
+     1    1.575    0.102    0.013   18.041 v _239539_/ZN (NOR2_X1)
+                   0.102    0.000   18.041 v _239764_/A1 (NOR3_X1)
+    12   45.999    0.311    0.392   18.433 ^ _239764_/ZN (NOR3_X1)
+                   0.314    0.033   18.467 ^ _251651_/A1 (NOR2_X1)
+     2    2.840    0.054   -0.009   18.457 v _251651_/ZN (NOR2_X1)
+                   0.054    0.000   18.457 v _251666_/A3 (OR4_X1)
+     1    1.787    0.017    0.126   18.583 v _251666_/ZN (OR4_X1)
+                   0.017    0.000   18.583 v _251670_/A (AOI211_X1)
+    11   36.432    0.273    0.343   18.927 ^ _251670_/ZN (AOI211_X1)
+                   0.273    0.002   18.928 ^ _252155_/C2 (OAI221_X1)
+     8   13.867    0.093    0.131   19.059 v _252155_/ZN (OAI221_X1)
+                   0.093    0.001   19.060 v _285236_/A2 (NOR4_X1)
+    59  112.563    1.055    1.253   20.313 ^ _285236_/ZN (NOR4_X1)
+                   1.056    0.025   20.338 ^ _285753_/A (AOI221_X1)
+     1    1.794    0.193   -0.044   20.294 v _285753_/ZN (AOI221_X1)
+                   0.193    0.000   20.294 v _285754_/B (AOI211_X1)
+     1    1.995    0.077    0.126   20.421 ^ _285754_/ZN (AOI211_X1)
+                   0.077    0.000   20.421 ^ _285760_/B1 (OAI221_X1)
+     1    2.866    0.038    0.042   20.463 v _285760_/ZN (OAI221_X1)
+                   0.038    0.000   20.463 v _285762_/B1 (AOI221_X1)
+     1    4.810    0.094    0.105   20.568 ^ _285762_/ZN (AOI221_X1)
+                   0.094    0.000   20.568 ^ _285786_/C2 (OAI211_X1)
+     1    4.387    0.319    0.052   20.620 v _285786_/ZN (OAI211_X1)
+                   0.319    0.001   20.621 v _285787_/A (OAI21_X1)
+     1    1.449    0.115    0.093   20.714 ^ _285787_/ZN (OAI21_X1)
+                   0.115    0.000   20.714 ^ _314271_/D (DFFR_X1)
+                                    20.714   data arrival time
+
+                            3.000    3.000   clock clk (rise edge)
+                            0.439    3.439   clock network delay (propagated)
+                            0.000    3.439   clock reconvergence pessimism
+                                     3.439 ^ _314271_/CK (DFFR_X1)
+                           -0.046    3.393   library setup time
+                                     3.393   data required time
+---------------------------------------------------------------------------------
+                                     3.393   data required time
+                                   -20.714   data arrival time
+---------------------------------------------------------------------------------
+                                   -17.321   slack (VIOLATED)
+
+
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             8.33e-02   2.72e-03   2.69e-03   8.87e-02  29.4%
+Combinational          4.51e-02   1.30e-01   3.66e-03   1.79e-01  59.4%
+Clock                  1.19e-02   2.16e-02   1.03e-04   3.36e-02  11.2%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  1.40e-01   1.54e-01   6.45e-03   3.01e-01 100.0%
+                          46.6%      51.3%       2.1%
+Design area 319804 um^2 60% utilization.
+=== Apex-GPU Physical Design Finished Successfully ===

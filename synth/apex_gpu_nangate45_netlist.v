@@ -169376,7 +169376,7 @@ module apex_gpu_top(clk, rst_n, start, warp_enable_mask, busy, done, fetch_pc, i
   wire [1:0] \u_coalescer.axi_req_warp_id ;
   wire [255:0] \u_coalescer.axi_req_wdata_line ;
   wire \u_coalescer.clk ;
-  wire signed [31:0] \u_coalescer.k ;
+  wire [31:0] \u_coalescer.k ;
   wire [31:0] \u_coalescer.lane_rdata[0] ;
   wire [31:0] \u_coalescer.lane_rdata[1] ;
   wire [31:0] \u_coalescer.lane_rdata[2] ;
@@ -169391,7 +169391,7 @@ module apex_gpu_top(clk, rst_n, start, warp_enable_mask, busy, done, fetch_pc, i
   wire [255:0] \u_coalescer.mem_fill_line ;
   wire \u_coalescer.mem_fill_valid ;
   wire [1:0] \u_coalescer.mem_fill_warp_id ;
-  wire signed [31:0] \u_coalescer.p ;
+  wire [31:0] \u_coalescer.p ;
   wire [7:0] \u_coalescer.pending_mask ;
   wire [7:0] \u_coalescer.req_active_mask ;
   wire [1:0] \u_coalescer.req_warp_id ;
@@ -169413,7 +169413,7 @@ module apex_gpu_top(clk, rst_n, start, warp_enable_mask, busy, done, fetch_pc, i
   wire [31:0] \u_coalescer.saved_wdata[6] ;
   wire [31:0] \u_coalescer.saved_wdata[7] ;
   wire [2:0] \u_coalescer.state ;
-  wire signed [31:0] \u_coalescer.u ;
+  wire [31:0] \u_coalescer.u ;
   wire [7:0] \u_div_stack.active_mask ;
   wire [15:0] \u_div_stack.branch_target_pc ;
   wire \u_div_stack.clk ;
@@ -169492,23 +169492,23 @@ module apex_gpu_top(clk, rst_n, start, warp_enable_mask, busy, done, fetch_pc, i
   wire [31:0] \u_sched.scoreboard[1] ;
   wire [31:0] \u_sched.scoreboard[2] ;
   wire [31:0] \u_sched.scoreboard[3] ;
-  wire signed [31:0] \u_sched.w ;
+  wire [31:0] \u_sched.w ;
   wire [3:0] \u_sched.warp_enable_mask ;
   wire [15:0] \u_sched.warp_pc[0] ;
   wire [15:0] \u_sched.warp_pc[1] ;
   wire [15:0] \u_sched.warp_pc[2] ;
   wire [15:0] \u_sched.warp_pc[3] ;
-  reg [1:0] \u_sched.warp_state[0] ;
-  reg [1:0] \u_sched.warp_state[1] ;
-  reg [1:0] \u_sched.warp_state[2] ;
-  reg [1:0] \u_sched.warp_state[3] ;
+  wire [1:0] \u_sched.warp_state[0] ;
+  wire [1:0] \u_sched.warp_state[1] ;
+  wire [1:0] \u_sched.warp_state[2] ;
+  wire [1:0] \u_sched.warp_state[3] ;
   wire \u_smem.clk ;
-  wire signed [31:0] \u_smem.i ;
-  wire signed [31:0] \u_smem.j ;
+  wire [31:0] \u_smem.i ;
+  wire [31:0] \u_smem.j ;
   wire \u_smem.req_is_write ;
   wire [7:0] \u_smem.req_mask ;
   wire \u_smem.rst_n ;
-  wire signed [31:0] \u_smem.u ;
+  wire [31:0] \u_smem.u ;
   INV_X1 _168056_ (
     .A(\u_axi_master.fill_line_data [190]),
     .ZN(_103427_)
@@ -1190332,30 +1190332,14 @@ module apex_gpu_top(clk, rst_n, start, warp_enable_mask, busy, done, fetch_pc, i
     .QN(_133027_),
     .RN(rst_n)
   );
-  always @(posedge clk, negedge rst_n)
-    if (!rst_n) \u_sched.warp_state[3] [0] <= _000161_;
-    else \u_sched.warp_state[3] [0] <= _000156_;
-  always @(posedge clk, negedge rst_n)
-    if (!rst_n) \u_sched.warp_state[3] [1] <= _000161_;
-    else \u_sched.warp_state[3] [1] <= _000157_;
-  always @(posedge clk, negedge rst_n)
-    if (!rst_n) \u_sched.warp_state[2] [0] <= _000160_;
-    else \u_sched.warp_state[2] [0] <= _000154_;
-  always @(posedge clk, negedge rst_n)
-    if (!rst_n) \u_sched.warp_state[2] [1] <= _000160_;
-    else \u_sched.warp_state[2] [1] <= _000155_;
-  always @(posedge clk, negedge rst_n)
-    if (!rst_n) \u_sched.warp_state[1] [0] <= _000159_;
-    else \u_sched.warp_state[1] [0] <= _000152_;
-  always @(posedge clk, negedge rst_n)
-    if (!rst_n) \u_sched.warp_state[1] [1] <= _000159_;
-    else \u_sched.warp_state[1] [1] <= _000153_;
-  always @(posedge clk, negedge rst_n)
-    if (!rst_n) \u_sched.warp_state[0] [0] <= _000158_;
-    else \u_sched.warp_state[0] [0] <= _000150_;
-  always @(posedge clk, negedge rst_n)
-    if (!rst_n) \u_sched.warp_state[0] [1] <= _000158_;
-    else \u_sched.warp_state[0] [1] <= _000151_;
+  DFFR_X1 _warp_state_3_0_ ( .CK(clk), .D(_000156_), .Q(\u_sched.warp_state[3] [0]), .QN(), .RN(rst_n) );
+  DFFR_X1 _warp_state_3_1_ ( .CK(clk), .D(_000157_), .Q(\u_sched.warp_state[3] [1]), .QN(), .RN(rst_n) );
+  DFFR_X1 _warp_state_2_0_ ( .CK(clk), .D(_000154_), .Q(\u_sched.warp_state[2] [0]), .QN(), .RN(rst_n) );
+  DFFR_X1 _warp_state_2_1_ ( .CK(clk), .D(_000155_), .Q(\u_sched.warp_state[2] [1]), .QN(), .RN(rst_n) );
+  DFFR_X1 _warp_state_1_0_ ( .CK(clk), .D(_000152_), .Q(\u_sched.warp_state[1] [0]), .QN(), .RN(rst_n) );
+  DFFR_X1 _warp_state_1_1_ ( .CK(clk), .D(_000153_), .Q(\u_sched.warp_state[1] [1]), .QN(), .RN(rst_n) );
+  DFFR_X1 _warp_state_0_0_ ( .CK(clk), .D(_000150_), .Q(\u_sched.warp_state[0] [0]), .QN(), .RN(rst_n) );
+  DFFR_X1 _warp_state_0_1_ ( .CK(clk), .D(_000151_), .Q(\u_sched.warp_state[0] [1]), .QN(), .RN(rst_n) );
   DFFR_X1 _336147_ (
     .CK(clk),
     .D(_000025_),

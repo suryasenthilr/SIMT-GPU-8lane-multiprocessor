@@ -10,6 +10,7 @@ import subprocess
 import threading
 import tkinter as tk
 from tkinter import ttk, scrolledtext, messagebox
+from PIL import Image, ImageTk
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 OSS_CAD_DIR = r"C:\Users\surya\.oss-cad-suite\oss-cad-suite"
@@ -95,6 +96,12 @@ class ApexGpuEDAApp(tk.Tk):
 
         btn_synth = ttk.Button(left_panel, text="Run Nangate 45nm ASIC Synthesis", style="Primary.TButton", command=self.run_synthesis)
         btn_synth.pack(fill=tk.X, pady=4)
+
+        btn_pnr = ttk.Button(left_panel, text="🔬 View GDSII Physical Layout", style="Accent.TButton", command=self.open_layout_viewer)
+        btn_pnr.pack(fill=tk.X, pady=4)
+
+        btn_klayout = ttk.Button(left_panel, text="🚀 Launch Live KLayout (WSL)", style="Green.TButton", command=self.launch_klayout)
+        btn_klayout.pack(fill=tk.X, pady=4)
 
         # Separator
         ttk.Separator(left_panel, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=15)
@@ -233,6 +240,105 @@ class ApexGpuEDAApp(tk.Tk):
             f'yosys -s synth\\run_synth_asic.ys"'
         )
         self._run_async(cmd, "Nangate 45nm ASIC Standard Cell Synthesis")
+
+    def open_layout_viewer(self):
+        img_path = os.path.join(ROOT_DIR, "pnr", "apex_gpu_top_layout.png")
+        if not os.path.exists(img_path):
+            messagebox.showwarning("Layout Missing", f"Layout rendering not found: {img_path}")
+            return
+
+        win = tk.Toplevel(self)
+        win.title("Apex-GPU — 45nm ASIC Physical Layout & Silicon Signoff")
+        win.geometry("1100x780")
+        win.configure(bg="#1e1e2e")
+
+        # Top Bar
+        top_bar = tk.Frame(win, bg="#181825", padx=15, pady=10)
+        top_bar.pack(fill=tk.X)
+        tk.Label(top_bar, text="APEX-GPU: 45nm ASIC PHYSICAL DESIGN & GDSII SIGNOFF",
+                 fg="#a6e3a1", bg="#181825", font=("Segoe UI Semibold", 13)).pack(side=tk.LEFT)
+        tk.Label(top_bar, text="● 176,699 CELLS | 100% LEGALIZED | 301 mW TOTAL POWER",
+                 fg="#11111b", bg="#a6e3a1", font=("Segoe UI Bold", 9), padx=8, pady=3).pack(side=tk.RIGHT)
+
+        # Body split
+        body = tk.Frame(win, bg="#1e1e2e", padx=12, pady=10)
+        body.pack(fill=tk.BOTH, expand=True)
+
+        # Left Canvas
+        c_frame = tk.Frame(body, bg="#11111b", relief="ridge", bd=1)
+        c_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 10))
+
+        canvas = tk.Canvas(c_frame, bg="#050811", highlightthickness=0)
+        canvas.pack(fill=tk.BOTH, expand=True)
+
+        def render_canvas():
+            w = canvas.winfo_width()
+            h = canvas.winfo_height()
+            if w < 50 or h < 50:
+                w, h = 640, 640
+            im = Image.open(img_path)
+            im_resized = im.resize((w, h), Image.Resampling.LANCZOS)
+            win._img_ref = ImageTk.PhotoImage(im_resized)
+            canvas.delete("all")
+            canvas.create_image(w // 2, h // 2, image=win._img_ref)
+
+        win.after(150, render_canvas)
+
+        # Right Metrics
+        r_panel = tk.Frame(body, bg="#181825", width=360, padx=14, pady=14, relief="ridge", bd=1)
+        r_panel.pack(side=tk.RIGHT, fill=tk.Y)
+        r_panel.pack_propagate(False)
+
+        tk.Label(r_panel, text="ASIC SIGNOFF METRICS", fg="#89b4fa", bg="#181825", font=("Segoe UI Semibold", 11)).pack(anchor=tk.W, pady=(0, 8))
+
+        stats = [
+            ("Die Dimensions", "743.06 µm × 743.06 µm (0.552 mm²)"),
+            ("Standard Cells", "176,699 instances (100% legalized)"),
+            ("Core Utilization", "60.0% (Cell area: 319,804 µm²)"),
+            ("Total Power", "301 mW @ 100MHz (Nangate 45nm)"),
+            ("Sequential Power", "88.7 mW (29.4%)"),
+            ("Combinational Power", "179 mW (59.4%)"),
+            ("Clock Network Power", "33.6 mW (11.2%)"),
+            ("Clock Tree (CTS)", "Balanced 9-Level Tree, 38,520 sinks"),
+            ("Clock Buffers", "4,422 buffers inserted (CLKBUF_X1..X3)"),
+            ("PDN Power Grid", "M1 Rails, M4 Vert (56µm), M7 Horiz (30µm)"),
+            ("GDSII Stream File", "apex_gpu_top.gds (15.8 MB)"),
+        ]
+
+        for title, val in stats:
+            tk.Label(r_panel, text=title, fg="#a6adc8", bg="#181825", font=("Segoe UI Bold", 8)).pack(anchor=tk.W, pady=(4, 0))
+            tk.Label(r_panel, text=val, fg="#cdd6f4", bg="#181825", font=("Segoe UI", 9)).pack(anchor=tk.W)
+
+        ttk.Separator(r_panel, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=12)
+
+        btn_k = tk.Button(r_panel, text="🚀 Launch Live KLayout (WSL)", bg="#a6e3a1", fg="#11111b",
+                          font=("Segoe UI Bold", 9), pady=6, relief="flat", cursor="hand2", command=self.launch_klayout)
+        btn_k.pack(fill=tk.X, pady=4)
+
+        btn_l = tk.Button(r_panel, text="📜 View OpenROAD P&R Log", bg="#89b4fa", fg="#11111b",
+                          font=("Segoe UI Bold", 9), pady=6, relief="flat", cursor="hand2", command=self.view_pnr_log)
+        btn_l.pack(fill=tk.X, pady=4)
+
+    def launch_klayout(self):
+        wsl_path = "/mnt/c/Users/surya/OneDrive/Documents/COLLEGE_RESEARCH/apex-gpu/pnr/apex_gpu_top.gds"
+        cmd = f"wsl klayout {wsl_path}"
+        threading.Thread(target=lambda: subprocess.run(cmd, shell=True), daemon=True).start()
+        messagebox.showinfo("KLayout Launched", f"Launching interactive KLayout viewer for:\napex_gpu_top.gds\n\nRendering multi-layer GDSII stream...")
+
+    def view_pnr_log(self):
+        log_path = os.path.join(ROOT_DIR, "pnr", "pnr_gpu.log")
+        if not os.path.exists(log_path):
+            messagebox.showwarning("Log Missing", f"Log not found: {log_path}")
+            return
+        top = tk.Toplevel(self)
+        top.title("OpenROAD Physical Design Log — apex_gpu_top")
+        top.geometry("900x650")
+        top.configure(bg="#1e1e2e")
+        txt = scrolledtext.ScrolledText(top, bg="#11111b", fg="#cdd6f4", font=("Consolas", 9))
+        txt.pack(fill="both", expand=True, padx=10, pady=10)
+        with open(log_path, "r", encoding="utf-8", errors="ignore") as f:
+            txt.insert("1.0", f.read())
+        txt.config(state="disabled")
 
 if __name__ == "__main__":
     app = ApexGpuEDAApp()
