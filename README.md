@@ -221,35 +221,7 @@ Launch via:
 ```bash
 Launch_EDA_Workbench.bat
 ```
----
 
-## Physical Design & GDSII Silicon Signoff
-
-Apex-GPU features an end-to-end backend physical design place-and-route (P&R) signoff implemented with **OpenROAD** and **KLayout** on the **Nangate 45nm Open Cell Library (FreePDK45)**.
-
-| Physical Parameter | Value / Metric | Technical Description |
-| :--- | :--- | :--- |
-| **Target Technology** | Nangate 45nm Open Cell Library | Standard VT, 1.10V, 25°C ($0.798\,\mu m^2$ NAND2_X1) |
-| **Die Dimensions** | $743.06 \times 743.06\,\mu m$ | Square form-factor silicon floorplan |
-| **Total Die Footprint** | $0.552\text{ mm}^2$ | Including IO peripheral ring and power rings |
-| **Core Area** | $533,140.34\,\mu m^2$ | Standard cell placement rows |
-| **Placed & Legalized Cells** | **176,699 instances** | 100.00% legalized via DPL diamond legalizer |
-| **Core Utilization** | **60.0%** | Density: $319,803.55\,\mu m^2$ standard cell area |
-| **Clock Tree Synthesis (CTS)** | **9-Level Balanced Tree** | TritonCTS balanced H-tree clustering |
-| **Clock Buffers** | 4,422 buffers inserted | `CLKBUF_X1`, `CLKBUF_X2`, `CLKBUF_X3` |
-| **Clock Sinks** | 38,520 flip-flops | Balanced skew and slew across all 8 SIMD lanes |
-| **Total Power Consumption** | **301.0 mW** @ 100MHz | Full vector execution power signoff (OpenSTA) |
-| **Sequential / Dynamic Power** | 88.7 mW (29.4%) | Warp register files, scoreboard, SIMT stack |
-| **Combinational Power** | 179.0 mW (59.4%) | 4x4 Systolic MMA, ALUs, memory coalescer |
-| **Clock Distribution Power** | 33.6 mW (11.2%) | Clock distribution buffer tree |
-| **Leakage Power** | 6.45 mW (2.1%) | Sub-threshold static leakage |
-| **Power Distribution Network** | M1 Rails, M4 Vert, M7 Horiz | $56\,\mu m$ vertical strap pitch, $30\,\mu m$ horizontal strap pitch |
-| **GDSII Tapeout Stream** | `apex_gpu_top.gds` (**15.8 MB**) | Merged via KLayout 0.30 stream engine |
-
-<p align="center">
-  <img src="docs/apex_gpu_top_layout.png" alt="Apex-GPU Physical Silicon Layout" width="60%">
-</p>
-<p align="center"><em>Apex-GPU 8-Lane SIMT Streaming Multiprocessor Die Layout (176k cells, 743×743 µm, Nangate 45nm).</em></p>
 
 ---
 
