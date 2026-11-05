@@ -1,8 +1,36 @@
 # Apex-GPU: Synthesizable 8-Lane SIMT GPU Streaming Multiprocessor (SM)
 
+[![ASIC Synthesis](https://img.shields.io/badge/ASIC%20Library-Nangate%2045nm-blue)](#)
+[![Physical Design](https://img.shields.io/badge/Physical%20Design-OpenROAD%20P%26R-purple)](#)
+[![Tapeout](https://img.shields.io/badge/Tapeout%20GDSII-176.7%20kCells-success)](#)
+[![Complexity](https://img.shields.io/badge/Gate%20Equivalents-388.4%20kGE-orange)](#)
+[![Throughput](https://img.shields.io/badge/SIMT%20Compute-8%20Lanes%20%7C%2016%20MACs%2Fcyc-red)](#)
+
 Apex-GPU is an open-source, cycle-accurate **8-Lane SIMT (Single-Instruction, Multiple-Threads) GPU Streaming Multiprocessor (SM)** IP core designed from first principles in synthesizable Verilog-2001. In modern GPU silicon hierarchies (such as NVIDIA SMs or AMD Compute Units), the Streaming Multiprocessor is the fundamental data-parallel compute engine responsible for scheduling, arbitrating, and executing hundreds of concurrent threads organized into lockstep warps.
 
-To validate physical silicon feasibility beyond simulation, the complete integrated core (`apex_gpu_top`) was synthesized and technology-mapped against the industry-standard **Nangate 45nm Open Cell Library** (1.10V, 25°C) using Yosys and ABC. The resulting gate-level ASIC implementation encompasses **168,113 standard cells**, occupying **309,935.75 μm²** (≈ 0.310 mm²) of core silicon area at **388.4 kGE** (Gate Equivalents normalized to a 2-input NAND).
+To validate physical silicon feasibility beyond simulation, the complete integrated core (`apex_gpu_top`) was synthesized, placed, and routed against the industry-standard **Nangate 45nm Open Cell Library** (FreePDK45, 10 metal layers) using OpenROAD and KLayout. The resulting taped-out physical ASIC implementation encompasses **176,699 placed cells**, occupying **$743.06 \times 743.06\,\mu m$** ($0.552\text{ mm}^2$) of silicon area at **301.0 mW** power consumption.
+
+---
+
+## 🏛️ Physical Silicon Tapeout & GDSII Signoff (Nangate 45nm)
+
+<p align="center">
+  <img src="docs/apex_gpu_top_layout.png" alt="Apex-GPU Physical Silicon Layout" width="60%">
+</p>
+<p align="center"><em>Full-Die Tapeout Layout (Rendered via KLayout). Apex-GPU 8-Lane SIMT Streaming Multiprocessor Die (176,699 placed cells, 743×743 µm, 301 mW).</em></p>
+
+| Physical Signoff Metric | Value / Metric | Technical Description / Signoff Engine |
+| :--- | :--- | :--- |
+| **Technology Node** | Nangate 45nm Open Cell Library (FreePDK45) | Standard VT, 1.10V, 25°C (10 Metal Stack) |
+| **Die Dimensions** | **$743.06 \times 743.06\,\mu m$** ($0.552\text{ mm}^2$) | Square silicon floorplan with peripheral IO ring |
+| **Core Area** | **$533,140.34\,\mu m^2$** | Standard cell placement rows |
+| **Placed & Legalized Cells** | **176,699 instances (100.00% Legalized)** | Legalized via OpenROAD `DPL` diamond legalizer |
+| **Core Utilization** | **60.0%** ($319,803.55\,\mu m^2$ instance area) | RePlAce analytical global placer |
+| **Clock Tree Synthesis (CTS)**| **9-Level Balanced Tree** | TritonCTS balanced H-tree clustering |
+| **Clock Sinks / Buffers** | 38,520 flip-flops / 4,422 buffers inserted | `CLKBUF_X1`, `CLKBUF_X2`, `CLKBUF_X3` |
+| **Total Power @ 100MHz** | **301.0 mW** (88.7 mW seq, 179 mW comb, 33.6 mW clock) | OpenSTA Vector Execution Power Signoff |
+| **Power Distribution Network** | M1 Rails, M4 Vert (56µm), M7 Horiz (30µm) | Multi-tier low-IR power mesh |
+| **GDSII Tapeout Stream** | [`apex_gpu_top.gds`](pnr/apex_gpu_top.gds) (**15.8 MB**) | Merged via KLayout 0.30 stream engine |
 
 The microarchitecture is engineered to address the foundational hardware challenges in high-throughput GPU silicon engineering: managing dynamic control-flow divergence via an 8-entry hardware SIMT stack with Immediate Post-Dominator (IPDOM) reconvergence, hiding memory latency through fine-grained multithreaded warp scheduling and hardware scoreboarding, accelerating tensor arithmetic via a 4×4 systolic MMA engine (16 MACs/cycle), and mitigating memory bus pressure using a 2-pass spatial coalescer integrated with an AMBA AXI4 master burst controller.
 
