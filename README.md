@@ -9,9 +9,9 @@ To validate physical silicon feasibility beyond simulation, the complete integra
 ## Physical Silicon Layout & GDSII (Nangate 45nm)
 
 <p align="center">
-  <img src="docs/apex_gpu_top_layout.png" alt="SIMT-GPU Physical Silicon Layout" width="60%">
+  <img src="docs/apex_gpu_top_layout.png?v=2" alt="SIMT-GPU Physical Silicon Layout" width="70%">
 </p>
-<p align="center"><em>Full-Die Tapeout Layout (Rendered via KLayout). SIMT-GPU 8-Lane SIMT Streaming Multiprocessor Die (176,699 placed cells, 743×743 µm, 301 mW).</em></p>
+<p align="center"><em>Full-Die Tapeout Layout (Rendered via OpenROAD). SIMT-GPU 8-Lane SIMT Streaming Multiprocessor Die (176,699 placed cells, 743×743 µm, 301 mW).</em></p>
 
 | Physical Signoff Metric | Value / Metric | Technical Description / Signoff Engine |
 | :--- | :--- | :--- |
