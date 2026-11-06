@@ -1,23 +1,17 @@
-# Apex-GPU: Synthesizable 8-Lane SIMT GPU Streaming Multiprocessor (SM)
+# SIMT-GPU: 8-Lane Streaming Multiprocessor (SM)
 
-[![ASIC Synthesis](https://img.shields.io/badge/ASIC%20Library-Nangate%2045nm-blue)](#)
-[![Physical Design](https://img.shields.io/badge/Physical%20Design-OpenROAD%20P%26R-purple)](#)
-[![Tapeout](https://img.shields.io/badge/Tapeout%20GDSII-176.7%20kCells-success)](#)
-[![Complexity](https://img.shields.io/badge/Gate%20Equivalents-388.4%20kGE-orange)](#)
-[![Throughput](https://img.shields.io/badge/SIMT%20Compute-8%20Lanes%20%7C%2016%20MACs%2Fcyc-red)](#)
-
-Apex-GPU is an open-source, cycle-accurate **8-Lane SIMT (Single-Instruction, Multiple-Threads) GPU Streaming Multiprocessor (SM)** IP core designed from first principles in synthesizable Verilog-2001. In modern GPU silicon hierarchies (such as NVIDIA SMs or AMD Compute Units), the Streaming Multiprocessor is the fundamental data-parallel compute engine responsible for scheduling, arbitrating, and executing hundreds of concurrent threads organized into lockstep warps.
+This GPU is an open-source, cycle-accurate **8-Lane SIMT (Single-Instruction, Multiple-Threads) GPU Streaming Multiprocessor (SM)** IP core designed from first principles in synthesizable Verilog-2001. In modern GPU silicon hierarchies (such as NVIDIA SMs or AMD Compute Units), the Streaming Multiprocessor is the fundamental data-parallel compute engine responsible for scheduling, arbitrating, and executing hundreds of concurrent threads organized into lockstep warps.
 
 To validate physical silicon feasibility beyond simulation, the complete integrated core (`apex_gpu_top`) was synthesized, placed, and routed against the industry-standard **Nangate 45nm Open Cell Library** (FreePDK45, 10 metal layers) using OpenROAD and KLayout. The resulting taped-out physical ASIC implementation encompasses **176,699 placed cells**, occupying **$743.06 \times 743.06\,\mu m$** ($0.552\text{ mm}^2$) of silicon area at **301.0 mW** power consumption.
 
 ---
 
-## 🏛️ Physical Silicon Tapeout & GDSII Signoff (Nangate 45nm)
+## Physical Silicon Layout & GDSII (Nangate 45nm)
 
 <p align="center">
-  <img src="docs/apex_gpu_top_layout.png" alt="Apex-GPU Physical Silicon Layout" width="60%">
+  <img src="docs/apex_gpu_top_layout.png" alt="SIMT-GPU Physical Silicon Layout" width="60%">
 </p>
-<p align="center"><em>Full-Die Tapeout Layout (Rendered via KLayout). Apex-GPU 8-Lane SIMT Streaming Multiprocessor Die (176,699 placed cells, 743×743 µm, 301 mW).</em></p>
+<p align="center"><em>Full-Die Tapeout Layout (Rendered via KLayout). SIMT-GPU 8-Lane SIMT Streaming Multiprocessor Die (176,699 placed cells, 743×743 µm, 301 mW).</em></p>
 
 | Physical Signoff Metric | Value / Metric | Technical Description / Signoff Engine |
 | :--- | :--- | :--- |
@@ -35,7 +29,7 @@ To validate physical silicon feasibility beyond simulation, the complete integra
 The microarchitecture is engineered to address the foundational hardware challenges in high-throughput GPU silicon engineering: managing dynamic control-flow divergence via an 8-entry hardware SIMT stack with Immediate Post-Dominator (IPDOM) reconvergence, hiding memory latency through fine-grained multithreaded warp scheduling and hardware scoreboarding, accelerating tensor arithmetic via a 4×4 systolic MMA engine (16 MACs/cycle), and mitigating memory bus pressure using a 2-pass spatial coalescer integrated with an AMBA AXI4 master burst controller.
 
 <p align="center">
-  <img src="docs/images/apex_gpu_architecture.png" alt="Apex-GPU Microarchitecture Block Diagram" width="100%">
+  <img src="docs/images/apex_gpu_architecture.png" alt="SIMT-GPU Microarchitecture Block Diagram" width="100%">
 </p>
 
 ---
@@ -198,7 +192,7 @@ gtkwave sim/apex_gpu.vcd sim/apex_gpu.gtkw
 ```
 
 <p align="center">
-  <img src="docs/images/apex_gpu_waveforms.png" alt="Apex-GPU Cycle-Accurate Execution Waveforms" width="100%">
+  <img src="docs/images/apex_gpu_waveforms.png" alt="SIMT-GPU Cycle-Accurate Execution Waveforms" width="100%">
 </p>
 
 Key waveforms exposed:
@@ -211,10 +205,10 @@ Key waveforms exposed:
 
 ## Graphical Desktop Workbench
 
-Apex-GPU includes a graphical EDA control center (`gui_app.py`) for desktop simulation, waveform launching, and ASIC synthesis.
+SIMT-GPU includes a graphical EDA control center (`gui_app.py`) for desktop simulation, waveform launching, and ASIC synthesis.
 
 <p align="center">
-  <img src="docs/images/apex_gpu_workbench_ui.png" alt="Apex-GPU Silicon Engineering Workbench UI" width="100%">
+  <img src="docs/images/apex_gpu_workbench_ui.png" alt="SIMT-GPU Silicon Engineering Workbench UI" width="100%">
 </p>
 
 Launch via:
@@ -228,7 +222,7 @@ Launch_EDA_Workbench.bat
 ## Repository Structure
 
 ```
-apex-gpu/
+SIMT-GPU-8lane-multiprocessor/
 ├── docs/
 │   ├── ARCHITECTURE.md             # Microarchitectural specification & concern analysis
 │   └── images/                     # Architectural diagram & authentic EDA screenshots
